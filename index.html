@@ -390,7 +390,7 @@
     <p class="header-sub">Centralisez et retrouvez tous les logiciels radio amateur par catégorie, système d'exploitation et langue.</p>
     <div class="header-stats">
       <div class="hstat"><strong id="total-count">—</strong>logiciels</div>
-      <div class="hstat"><strong>17</strong>catégories</div>
+      <div class="hstat"><strong id="cat-count">—</strong>catégories</div>
       <div class="hstat"><strong>6</strong>OS supportés</div>
     </div>
   </div>
@@ -685,11 +685,11 @@ let data = [
   {name:'LOTA (Lighthouses)',desc:'Lighthouses on the Air : activations phares mondiaux, log, diplômes',url:'https://www.illw.net/',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'WWBOTA (Castles)',desc:'World Wide Bunkers on the Air, châteaux et fortifications européens',url:'https://wwbota.org/',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'GridTracker',desc:'Suivi grilles Maidenhead, POTA/SOTA/IOTA sur carte, alertes FT8',url:'https://gridtracker.org/',cat:'IOTA/POTA/SOTA/BOTA',os:['Windows','Linux','macOS'],lang:['EN'],lic:'Open Source'},
-  {name:'K0PIR Ham Radio (YouTube)',subcat:'POTA/SOTA Terrain',desc:'Chaîne YouTube POTA : activations parcs, antennes portables, FT8 terrain',url:'https://www.youtube.com/@k0pir',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'OH8STN Julian (YouTube)',subcat:'POTA/SOTA Terrain',desc:'Chaîne YouTube : SOTA/POTA terrain, JS8Call, Winlink, radio tactique off-grid',url:'https://www.youtube.com/@OH8STN',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'DX Commander M0MCX (YouTube)',subcat:'POTA/SOTA Terrain',desc:'Chaîne YouTube antennes portables HF, activations DX, POTA/SOTA contesting',url:'https://www.youtube.com/@DXCommander',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'Ham Radio Crash Course (YouTube)',subcat:'POTA/SOTA Terrain',desc:'Tutos POTA débutant, licences US, modes digitaux terrain — K6UDA',url:'https://www.youtube.com/@HamRadioCrashCourse',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'W2AEW (YouTube)',subcat:'Technique & SDR',desc:'Chaîne technique RF : mesures terrain, antennes portables, analyse signaux',url:'https://www.youtube.com/@w2aew',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'K0PIR Ham Radio (YouTube)\',subcat:\'POTA/SOTA Terrain',desc:'Chaîne YouTube POTA : activations parcs, antennes portables, FT8 terrain',url:'https://www.youtube.com/@k0pir',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'OH8STN Julian (YouTube)\',subcat:\'POTA/SOTA Terrain',desc:'Chaîne YouTube : SOTA/POTA terrain, JS8Call, Winlink, radio tactique off-grid',url:'https://www.youtube.com/@OH8STN',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'DX Commander M0MCX (YouTube)\',subcat:\'POTA/SOTA Terrain',desc:'Chaîne YouTube antennes portables HF, activations DX, POTA/SOTA contesting',url:'https://www.youtube.com/@DXCommander',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'Ham Radio Crash Course (YouTube)\',subcat:\'POTA/SOTA Terrain',desc:'Tutos POTA débutant, licences US, modes digitaux terrain — K6UDA',url:'https://www.youtube.com/@HamRadioCrashCourse',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'W2AEW (YouTube)\',subcat:\'Technique & SDR',desc:'Chaîne technique RF : mesures terrain, antennes portables, analyse signaux',url:'https://www.youtube.com/@w2aew',cat:'IOTA/POTA/SOTA/BOTA',os:['Web'],lang:['EN'],lic:'Gratuit'},
   // Test matériels
   {name:'RTL-SDR Blog',desc:'Tests et reviews RTL-SDR, dongles SDR, antennes, accessoires — référence mondiale',url:'https://www.rtl-sdr.com/',cat:'Test matériels',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'Passion Radio Blog',desc:'Tests matériel radio amateur francophone : transceivers, antennes, accessoires',url:'https://www.passion-radio.org/',cat:'Test matériels',os:['Web'],lang:['FR'],lic:'Gratuit'},
@@ -753,13 +753,13 @@ let data = [
   // Ham Radio Wallpaper
   {name:'Unsplash – Radio Amateur',desc:'Photos HD libres de droits : antennes, stations, matériel radio, nature et sommets SOTA',url:'https://unsplash.com/s/photos/ham-radio',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'Pixabay – Ham Radio',desc:'Wallpapers et illustrations radio amateur gratuits, libres de droits commerciaux',url:'https://pixabay.com/images/search/ham%20radio/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'WallpaperFlare – Amateur Radio',desc:'Fond d'écrans HD/4K radio amateur, antennes HF, stations, satellites',url:'https://www.wallpaperflare.com/search?wallpaper=amateur+radio',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'F5SVP Fonds d'écran',desc:'Fonds d'écran radioamateur créés par F5SVP, thème radio et DX',url:'https://f5svp.fr/2024/08/07/fond-decran-radioamateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
-  {name:'QRZ.com Wallpapers',desc:'Collection de fonds d'écran radio amateur partagés par la communauté QRZ',url:'https://forums.qrz.com/index.php?search/1/?q=wallpaper&o=date',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'WallpaperFlare – Amateur Radio',desc:'Fond d\'écrans HD/4K radio amateur, antennes HF, stations, satellites',url:'https://www.wallpaperflare.com/search?wallpaper=amateur+radio',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'F5SVP Fonds d\'écran',desc:'Fonds d\'écran radioamateur créés par F5SVP, thème radio et DX',url:'https://f5svp.fr/2024/08/07/fond-decran-radioamateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
+  {name:'QRZ.com Wallpapers',desc:'Collection de fonds d\'écran radio amateur partagés par la communauté QRZ',url:'https://forums.qrz.com/index.php?search/1/?q=wallpaper&o=date',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'NASA Astronomy Picture',desc:'Images spatiales NASA libres de droits, parfaites pour station radio/satellite',url:'https://apod.nasa.gov/apod/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'ARRL Photo Archive',desc:'Photos officielles ARRL : field day, concours, stations, antennes historiques',url:'https://www.arrl.org/photo-archive',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
   {name:'Reddit r/amateurradio',desc:'Communauté Reddit radio amateur : photos de stations, antennes, configurations shack',url:'https://www.reddit.com/r/amateurradio/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
-  {name:'Ham Radio Wallpaper Pack F4JCF',desc:'Pack de fonds d'écran thème radio amateur, DX, POTA/SOTA — collection personnelle',url:'https://f4jcf.github.io/catalogue-radio-amateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
+  {name:'Ham Radio Wallpaper Pack F4JCF',desc:'Pack de fonds d\'écran thème radio amateur, DX, POTA/SOTA — collection personnelle',url:'https://f4jcf.github.io/catalogue-radio-amateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
   // Divers
   {name:'QRZ.com',desc:'Base de données indicatifs mondiale, biographies, log en ligne, DXCC',url:'https://www.qrz.com/',cat:'Divers',os:['Web'],lang:['EN'],lic:'Freemium'},
   {name:'HamAlert',desc:'Alertes DX personnalisées, SOTA/POTA/DXpéditions, toutes plateformes',url:'https://hamalert.org/',cat:'Divers',os:['Web','Android','iOS'],lang:['EN'],lic:'Gratuit'},
@@ -844,34 +844,42 @@ function render() {
 
   const grid = document.getElementById('grid');
   if (!f.length) { grid.innerHTML = '<div class="empty">// Aucun résultat pour ces critères.<br>Essayez de réinitialiser les filtres.</div>'; return; }
-
-  grid.innerHTML = f.map(d => `
+  // Render défensif : on skippe les entrées qui plantent
+  const cards = [];
+  f.forEach(d => {
+    try {
+      const nm = (d.name||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const ds = (d.desc||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      cards.push(`
 <div class="card">
   <div class="card-top">
     <div class="card-icon">${ICONS[d.cat]||'🔧'}</div>
-    <div>
-      <div class="card-name">${d.name}</div>
-      <div class="card-desc">${d.desc}</div>
-    </div>
+    <div><div class="card-name">${nm}</div><div class="card-desc">${ds}</div></div>
   </div>
   <div class="tags">
-    <span class="tag tag-cat">${d.cat}</span>
-    ${d.os.map(o=>`<span class="tag tag-os">${o}</span>`).join('')}
-    <span class="tag ${licTag(d.lic)}">${d.lic}</span>
+    <span class="tag tag-cat">${d.cat||''}</span>
+    ${(d.os||[]).map(o=>`<span class="tag tag-os">${o}</span>`).join('')}
+    <span class="tag ${licTag(d.lic)}">${d.lic||''}</span>
   </div>
   <div class="tags" style="margin-top:4px">
     ${acat==='YouTube' && d.subcat ? `<span class="tag tag-subcat">${d.subcat}</span>` : ''}
-    ${d.lang.map(l=>`<span class="tag tag-lang">${l}</span>`).join('')}
+    ${(d.lang||[]).map(l=>`<span class="tag tag-lang">${l}</span>`).join('')}
   </div>
   <div class="card-footer">
-    <a href="${d.url}" class="dl-btn" target="_blank" rel="noopener">
+    <a href="${d.url||'#'}" class="dl-btn" target="_blank" rel="noopener">
       <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M6 1v7M3 5.5l3 3 3-3"/><line x1="1" y1="10" x2="11" y2="10"/>
       </svg>
       Télécharger / Site officiel
     </a>
   </div>
-</div>`).join('');
+</div>`);
+    } catch(e) { console.warn('Carte ignorée:', d.name, e); }
+  });
+  grid.innerHTML = cards.join('');
+  return;
+  // ── ancien rendu (remplacé) ──
+
 }
 
 function clearAll() {
@@ -988,13 +996,18 @@ function showNotif(msg, color) {
   setTimeout(() => { n.style.opacity='0'; setTimeout(()=>n.remove(), 400); }, 2800);
 }
 
-const BUILTIN_COUNT = data.length;  // Nombre de logiciels intégrés au départ
+const BUILTIN_COUNT = data.length;
 
 // Chargement au lancement
+try {
+  document.getElementById('total-count').textContent = data.length;
+  document.getElementById('cat-count').textContent = [...new Set(data.map(d=>d.cat))].length;
+  render();
+} catch(e) {
+  console.error('Erreur render:', e);
+  document.getElementById('grid').innerHTML = '<div class="empty">⚠️ Erreur : ' + e.message + '</div>';
+}
 loadUserSoftware();
-document.getElementById('total-count').textContent = data.length;
-
-render();
 </script>
 </body>
 </html>
