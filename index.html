@@ -890,42 +890,84 @@ function addSw() {
     lic:  document.getElementById('f-lic').value
   };
   data.push(newItem);
-  saveUserSoftware();
   document.getElementById('total-count').textContent = data.length;
   closeModal();
   render();
-  showNotif(`✓ "${name}" ajouté et sauvegardé`, 'rgba(34,197,94,.25)');
+  if (GAS_URL) {
+    showNotif('⏳ Partage en cours…');
+    saveUserSoftware(newItem, res => {
+      showNotif(res && res.success
+        ? `✓ "${name}" partagé avec la communauté !`
+        : `💾 "${name}" sauvegardé localement`,
+        res && res.success ? 'rgba(34,197,94,.25)' : 'rgba(245,158,11,.25)');
+    });
+  } else {
+    saveUserSoftware(newItem);
+    showNotif(`💾 "${name}" sauvegardé localement`, 'rgba(34,197,94,.25)');
+  }
 }
 
-// ── PERSISTANCE LOCALSTORAGE ────────────────────────────
-// Charge les logiciels ajoutés par l'utilisateur au lancement
+// ── PERSISTANCE HYBRIDE : localStorage + Google Sheets ──────────
+// Remplace cette URL par ton URL Google Apps Script
+const GAS_URL = '';  // ← colle ici ton URL https://script.google.com/macros/s/.../exec
+
 function loadUserSoftware() {
+  // 1. Charge d'abord depuis localStorage (instantané)
   try {
     const saved = localStorage.getItem('ra_user_software');
     if (saved) {
-      const userItems = JSON.parse(saved);
-      if (Array.isArray(userItems) && userItems.length > 0) {
-        // Évite les doublons par nom
+      const local = JSON.parse(saved);
+      if (Array.isArray(local) && local.length > 0) {
         const existingNames = new Set(data.map(d => d.name.toLowerCase()));
-        let added = 0;
-        userItems.forEach(item => {
-          if (!existingNames.has(item.name.toLowerCase())) {
-            data.push(item);
-            added++;
-          }
+        local.forEach(item => {
+          if (!existingNames.has(item.name.toLowerCase())) data.push(item);
         });
-        if (added > 0) showNotif(`✓ ${added} logiciel${added>1?'s':''} personnel${added>1?'s':''} rechargé${added>1?'s':''}`);
       }
     }
-  } catch(e) { console.warn('Erreur chargement localStorage:', e); }
+  } catch(e) {}
+
+  // 2. Charge ensuite depuis Google Sheets si GAS_URL configuré
+  if (!GAS_URL) return;
+  fetch(GAS_URL, { method:'POST', redirect:'follow',
+    body: JSON.stringify({ action:'getEntries' }) })
+  .then(r => r.json())
+  .then(items => {
+    if (!Array.isArray(items) || !items.length) return;
+    const existingNames = new Set(data.map(d => d.name.toLowerCase()));
+    let added = 0;
+    items.forEach(item => {
+      if (!item.name || existingNames.has(item.name.toLowerCase())) return;
+      if (typeof item.os   === 'string') item.os   = item.os   ? item.os.split(',').map(s=>s.trim())   : [];
+      if (typeof item.lang === 'string') item.lang = item.lang ? item.lang.split(',').map(s=>s.trim()) : [];
+      data.push(item); added++;
+    });
+    if (added > 0) {
+      document.getElementById('total-count').textContent = data.length;
+      render();
+      showNotif(`☁️ ${added} logiciel${added>1?'s':''} communautaire${added>1?'s':''} chargé${added>1?'s':''}`);
+    }
+  })
+  .catch(e => console.warn('GAS fetch error:', e));
 }
 
-function saveUserSoftware() {
+function saveUserSoftware(entry, callback) {
+  // Sauvegarde locale toujours
   try {
-    // Sauvegarde uniquement les ajouts utilisateur (au-delà de la liste initiale)
-    const userItems = data.slice(BUILTIN_COUNT);
-    localStorage.setItem('ra_user_software', JSON.stringify(userItems));
-  } catch(e) { console.warn('Erreur sauvegarde localStorage:', e); }
+    const saved = JSON.parse(localStorage.getItem('ra_user_software')||'[]');
+    saved.push(entry);
+    localStorage.setItem('ra_user_software', JSON.stringify(saved));
+  } catch(e) {}
+
+  // Sauvegarde GAS si configuré
+  if (!GAS_URL) { if (callback) callback({ success: true }); return; }
+  const pseudo = document.getElementById('f-pseudo') ?
+    document.getElementById('f-pseudo').value.trim() : 'Anonyme';
+  fetch(GAS_URL, { method:'POST', redirect:'follow',
+    body: JSON.stringify({ action:'addEntry',
+      entry: { ...entry, added_by: pseudo || 'Anonyme' } }) })
+  .then(r => r.json())
+  .then(res => { if (callback) callback(res); })
+  .catch(e => { if (callback) callback({ success: false }); });
 }
 
 function showNotif(msg, color) {
