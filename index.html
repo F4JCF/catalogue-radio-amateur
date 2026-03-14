@@ -447,7 +447,7 @@
         <option>Concours</option><option>APRS</option><option>SDR</option><option>Satellite</option>
         <option>CAT/Contrôle</option><option>Antennes</option><option>Digital/Multi-mode</option>
         <option>Réseau/VoIP</option><option>Email Radio</option><option>DMR/D-Star/C4FM</option>
-        <option>Propagation</option><option>Packet Radio</option><option>QSL</option><option>YouTube</option><option>Cluster/DX</option><option>IOTA/POTA/SOTA/BOTA</option><option>Test matériels</option><option>Locator/GPS</option><option>Raspberry Pi</option><option>Ballon Sonde</option><option>LoRa/Meshtastic</option><option>Arduino</option><option>Divers</option>
+        <option>Propagation</option><option>Packet Radio</option><option>QSL</option><option>YouTube</option><option>Cluster/DX</option><option>IOTA/POTA/SOTA/BOTA</option><option>Test matériels</option><option>Locator/GPS</option><option>Raspberry Pi</option><option>Ballon Sonde</option><option>LoRa/Meshtastic</option><option>Arduino</option><option>Ham Radio Wallpaper</option><option>Divers</option>
       </select>
     </div>
     <div class="fr"><label>OS (Ctrl+clic = plusieurs)</label>
@@ -492,7 +492,7 @@ const ICONS = {
   'FT8/WSPR':'📶','CW/Morse':'🔑','SSTV':'🖼️','Log QSO':'📓','Concours':'🏆',
   'APRS':'📍','SDR':'📺','Satellite':'🛰️','CAT/Contrôle':'🎛️','Antennes':'📐',
   'Digital/Multi-mode':'🔀','Réseau/VoIP':'🌐','Email Radio':'📧','DMR/D-Star/C4FM':'💬',
-  'Propagation':'🌍','Packet Radio':'📦','QSL':'🪪','YouTube':'▶️','Cluster/DX':'📡','IOTA/POTA/SOTA/BOTA':'🏔️','Test matériels':'🔬','Locator/GPS':'📌','Raspberry Pi':'🍓','Ballon Sonde':'🎈','LoRa/Meshtastic':'📻','Arduino':'⚡','Divers':'🔧'
+  'Propagation':'🌍','Packet Radio':'📦','QSL':'🪪','YouTube':'▶️','Cluster/DX':'📡','IOTA/POTA/SOTA/BOTA':'🏔️','Test matériels':'🔬','Locator/GPS':'📌','Raspberry Pi':'🍓','Ballon Sonde':'🎈','LoRa/Meshtastic':'📻','Arduino':'⚡','Ham Radio Wallpaper':'🖼️','Divers':'🔧'
 };
 
 let data = [
@@ -750,6 +750,16 @@ let data = [
   {name:'Si5351 Library',desc:'Contrôle générateur Si5351 depuis Arduino, beacon WSPR/QRSS/CW',url:'https://github.com/etherkit/Si5351Arduino',cat:'Arduino',os:['Windows','Linux','macOS'],lang:['EN'],lic:'Open Source'},
   {name:'Morserino-32',desc:'Keyer/entraîneur Morse open source Arduino ESP32, WLAN, écran OLED',url:'https://www.morserino.info/',cat:'Arduino',os:['Windows','Linux','macOS'],lang:['EN','FR'],lic:'Open Source'},
   {name:'QRP Labs firmware',desc:'Firmware open source kits QRP Labs : WSPR beacon, transceiver QCX',url:'https://www.qrp-labs.com/',cat:'Arduino',os:['Windows','Linux'],lang:['EN'],lic:'Open Source'},
+  // Ham Radio Wallpaper
+  {name:'Unsplash – Radio Amateur',desc:'Photos HD libres de droits : antennes, stations, matériel radio, nature et sommets SOTA',url:'https://unsplash.com/s/photos/ham-radio',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'Pixabay – Ham Radio',desc:'Wallpapers et illustrations radio amateur gratuits, libres de droits commerciaux',url:'https://pixabay.com/images/search/ham%20radio/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'WallpaperFlare – Amateur Radio',desc:'Fond d'écrans HD/4K radio amateur, antennes HF, stations, satellites',url:'https://www.wallpaperflare.com/search?wallpaper=amateur+radio',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'F5SVP Fonds d'écran',desc:'Fonds d'écran radioamateur créés par F5SVP, thème radio et DX',url:'https://f5svp.fr/2024/08/07/fond-decran-radioamateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
+  {name:'QRZ.com Wallpapers',desc:'Collection de fonds d'écran radio amateur partagés par la communauté QRZ',url:'https://forums.qrz.com/index.php?search/1/?q=wallpaper&o=date',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'NASA Astronomy Picture',desc:'Images spatiales NASA libres de droits, parfaites pour station radio/satellite',url:'https://apod.nasa.gov/apod/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'ARRL Photo Archive',desc:'Photos officielles ARRL : field day, concours, stations, antennes historiques',url:'https://www.arrl.org/photo-archive',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'Reddit r/amateurradio',desc:'Communauté Reddit radio amateur : photos de stations, antennes, configurations shack',url:'https://www.reddit.com/r/amateurradio/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['EN'],lic:'Gratuit'},
+  {name:'Ham Radio Wallpaper Pack F4JCF',desc:'Pack de fonds d'écran thème radio amateur, DX, POTA/SOTA — collection personnelle',url:'https://f4jcf.github.io/catalogue-radio-amateur/',cat:'Ham Radio Wallpaper',os:['Web'],lang:['FR'],lic:'Gratuit'},
   // Divers
   {name:'QRZ.com',desc:'Base de données indicatifs mondiale, biographies, log en ligne, DXCC',url:'https://www.qrz.com/',cat:'Divers',os:['Web'],lang:['EN'],lic:'Freemium'},
   {name:'HamAlert',desc:'Alertes DX personnalisées, SOTA/POTA/DXpéditions, toutes plateformes',url:'https://hamalert.org/',cat:'Divers',os:['Web','Android','iOS'],lang:['EN'],lic:'Gratuit'},
@@ -909,7 +919,8 @@ function addSw() {
 
 // ── PERSISTANCE HYBRIDE : localStorage + Google Sheets ──────────
 // Remplace cette URL par ton URL Google Apps Script
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbz5PA2hnNCpIgqsEXbnEAzvphVgIVI8Yc-lhdUkdZ2H7HSm6WOPY6CVz1XNIdZYPRnBOA/exec';
+const GAS_URL = '';  // ← colle ici ton URL https://script.google.com/macros/s/.../exec
+
 function loadUserSoftware() {
   // 1. Charge d'abord depuis localStorage (instantané)
   try {
